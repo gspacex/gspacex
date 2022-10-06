@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*",
+    "workers/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.5.4"
+  }
+}

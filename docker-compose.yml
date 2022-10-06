@@ -1,0 +1,40 @@
+version: "3.1"
+
+networks:
+  gspacex:
+    driver: bridge
+
+volumes:
+  db:
+
+services:
+  db:
+    image: mongo:bionic
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: gspacex
+      MONGO_INITDB_ROOT_PASSWORD: gspacex
+      MONGO_INITDB_DATABASE: spacex-api
+    networks:
+      - gspacex
+    ports:
+      - "27017:27017"
+    volumes: 
+      - db:/data/db
+      - ./services/db/initdb/01-restore.sh:/docker-entrypoint-initdb.d/01-restore.sh
+      - ./services/db/initdb/02-init.js:/docker-entrypoint-initdb.d/02-init.js
+
+      - ./services/db/dump:/dump
+
+  dbadmin:
+    image: mongo-express:latest
+    links:
+      - db
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: gspacex
+      ME_CONFIG_MONGODB_ADMINPASSWORD: gspacex
+      ME_CONFIG_MONGODB_SERVER: db
+      ME_CONFIG_MONGODB_PORT: "27017"
+    networks:
+      - gspacex
+    ports:
+      - 8081:8081

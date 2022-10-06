@@ -1,0 +1,700 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator pothos {
+  provider = "prisma-pothos-types"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type CompanyHeadquarters {
+  address String
+  city    String
+  state   String
+}
+
+type CompanyLinks {
+  elon_twitter String
+  flickr       String
+  twitter      String
+  website      String
+}
+
+type DragonDiameter {
+  feet   Int
+  meters Float
+}
+
+type DragonHeatShield {
+  dev_partner  String
+  material     String
+  size_meters  Float
+  temp_degrees Int
+}
+
+type DragonHeightWTrunk {
+  feet   Float
+  meters Float
+}
+
+type DragonLaunchPayloadMass {
+  kg Int
+  lb Int
+}
+
+type DragonLaunchPayloadVol {
+  cubic_feet   Int
+  cubic_meters Int
+}
+
+type DragonPressurizedCapsule {
+  payload_volume DragonPressurizedCapsulePayloadVolume
+}
+
+type DragonPressurizedCapsulePayloadVolume {
+  cubic_feet   Int
+  cubic_meters Int
+}
+
+type DragonReturnPayloadMass {
+  kg Int
+  lb Int
+}
+
+type DragonReturnPayloadVol {
+  cubic_feet   Int
+  cubic_meters Int
+}
+
+type DragonThrusters {
+  amount Int
+  fuel_1 String
+  fuel_2 String
+  isp    Int
+  pods   Int
+  thrust DragonThrustersThrust
+  type   String
+}
+
+type DragonThrustersThrust {
+  /// Multiple data types found: Float: 66.7%, Int: 33.3% out of 3 sampled entries
+  //kN  Json
+  kN  Float
+  lbf Int
+}
+
+type DragonTrunk {
+  cargo        DragonTrunkCargo
+  trunk_volume DragonTrunkTrunkVolume
+}
+
+type DragonTrunkCargo {
+  solar_array         Int
+  unpressurized_cargo Boolean
+}
+
+type DragonTrunkTrunkVolume {
+  cubic_feet   Int
+  cubic_meters Int
+}
+
+type HistoriesLinks {
+  article String?
+}
+
+type LandpadImages {
+  large String[]
+}
+
+type LaunchCore {
+  core            String?  @db.ObjectId
+  flight          Int?
+  gridfins        Boolean?
+  landing_attempt Boolean?
+  landing_success Boolean?
+  landing_type    String?
+  landpad         String?  @db.ObjectId
+  legs            Boolean?
+  reused          Boolean?
+}
+
+type LaunchCrew {
+  crew String @db.ObjectId
+  role String
+}
+
+type LaunchFailure {
+  altitude Int?
+  reason   String
+  time     Int
+}
+
+type LaunchFairings {
+  recovered        Boolean?
+  recovery_attempt Boolean?
+  reused           Boolean?
+  ships            String[] @db.ObjectId
+}
+
+type LaunchLinks {
+  article    String?
+  flickr     LaunchLinksFlickr
+  patch      LaunchLinksPatch
+  presskit   String?
+  reddit     LaunchLinksReddit
+  webcast    String?
+  wikipedia  String?
+  youtube_id String?
+}
+
+type LaunchLinksFlickr {
+  original String[]
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  //small    Json?
+  small String[]
+}
+
+type LaunchLinksPatch {
+  large String?
+  small String?
+}
+
+type LaunchLinksReddit {
+  campaign String?
+  launch   String?
+  media    String?
+  recovery String?
+}
+
+type LaunchpadImages {
+  large String[]
+}
+
+type PayloadDragon {
+  capsule           String?  @db.ObjectId
+  flight_time_sec   Int?
+  land_landing      Boolean?
+  manifest          String?
+  /// Multiple data types found: Float: 44.4%, Int: 55.6% out of 225 sampled entries
+  //mass_returned_kg  Json?
+  mass_returned_kg  Float?
+  /// Multiple data types found: Float: 33.3%, Int: 66.7% out of 225 sampled entries
+  //mass_returned_lbs Json?
+  mass_returned_lbs Float?
+  water_landing     Boolean?
+}
+
+type RocketDiameter {
+  /// Multiple data types found: Float: 50%, Int: 50% out of 4 sampled entries
+  //feet   Json
+  feet   Float
+  /// Multiple data types found: Float: 75%, Int: 25% out of 4 sampled entries
+  //meters Json
+  meters Float
+}
+
+type RocketEngines {
+  engine_loss_max  Int?
+  isp              RocketEnginesIsp
+  layout           String?
+  number           Int
+  propellant_1     String
+  propellant_2     String
+  thrust_sea_level RocketEnginesThrustSeaLevel
+  /// Multiple data types found: Float: 50%, Int: 50% out of 4 sampled entries
+  //thrust_to_weight Json
+  thrust_to_weight Float
+  thrust_vacuum    RocketEnginesThrustVacuum
+  type             String
+  version          String
+}
+
+type RocketEnginesIsp {
+  sea_level Int
+  vacuum    Int
+}
+
+type RocketEnginesThrustSeaLevel {
+  kN  Int
+  lbf Int
+}
+
+type RocketEnginesThrustVacuum {
+  kN  Int
+  lbf Int
+}
+
+type RocketFirstStage {
+  burn_time_sec    Int?
+  engines          Int
+  /// Multiple data types found: Float: 25%, Int: 75% out of 4 sampled entries
+  //fuel_amount_tons Json
+  fuel_amount_tons Float
+  reusable         Boolean
+  thrust_sea_level RocketFirstStageThrustSeaLevel
+  thrust_vacuum    RocketFirstStageThrustVacuum
+}
+
+type RocketFirstStageThrustSeaLevel {
+  kN  Int
+  lbf Int
+}
+
+type RocketFirstStageThrustVacuum {
+  kN  Int
+  lbf Int
+}
+
+type RocketHeight {
+  /// Multiple data types found: Float: 50%, Int: 50% out of 4 sampled entries
+  //feet   Json
+  feet   Float
+  /// Multiple data types found: Float: 25%, Int: 75% out of 4 sampled entries
+  //meters Json
+  meters Float
+}
+
+type RocketLandingLegs {
+  material String?
+  number   Int
+}
+
+type RocketMass {
+  kg Int
+  lb Int
+}
+
+type RocketPayloadWeights {
+  id   String
+  kg   Int
+  lb   Int
+  name String
+}
+
+type RocketSecondStage {
+  burn_time_sec    Int?
+  engines          Int
+  /// Multiple data types found: Float: 25%, Int: 75% out of 4 sampled entries
+  //fuel_amount_tons Json
+  fuel_amount_tons Float
+  payloads         RocketSecondStagePayload
+  reusable         Boolean
+  thrust           RocketSecondStageThrust
+}
+
+type RocketSecondStagePayload {
+  composite_fairing RocketSecondStagePayloadCompositeFairing
+  option_1          String
+}
+
+type RocketSecondStagePayloadCompositeFairing {
+  diameter RocketSecondStagePayloadCompositeFairingDiameter
+  height   RocketSecondStagePayloadCompositeFairingHeight
+}
+
+type RocketSecondStagePayloadCompositeFairingDiameter {
+  feet   Float?
+  meters Float?
+}
+
+type RocketSecondStagePayloadCompositeFairingHeight {
+  /// Multiple data types found: Float: 33.3%, Int: 66.7% out of 4 sampled entries
+  //feet   Json?
+  feet   Float?
+  meters Float?
+}
+
+type RocketSecondStageThrust {
+  kN  Int
+  lbf Int
+}
+
+type StarlinkSpaceTrack {
+  APOAPSIS            Float
+  ARG_OF_PERICENTER   Float
+  BSTAR               Float
+  CCSDS_OMM_VERS      String
+  CENTER_NAME         String
+  CLASSIFICATION_TYPE String
+  COMMENT             String
+  COUNTRY_CODE        String?
+  CREATION_DATE       String
+  DECAYED             Int
+  DECAY_DATE          String?
+  ECCENTRICITY        Float
+  ELEMENT_SET_NO      Int
+  EPHEMERIS_TYPE      Int
+  EPOCH               String
+  FILE                Int
+  GP_ID               Int
+  /// Multiple data types found: Float: 99.9%, Int: 0.1% out of 1000 sampled entries
+  //INCLINATION         Json
+  INCLINATION         Float
+  LAUNCH_DATE         String?
+  MEAN_ANOMALY        Float
+  MEAN_ELEMENT_THEORY String
+  MEAN_MOTION         Float
+  /// Multiple data types found: Float: 7.4%, Int: 92.6% out of 1000 sampled entries
+  //MEAN_MOTION_DDOT    Json
+  MEAN_MOTION_DDOT    Float
+  MEAN_MOTION_DOT     Float
+  NORAD_CAT_ID        Int
+  OBJECT_ID           String
+  OBJECT_NAME         String
+  OBJECT_TYPE         String
+  ORIGINATOR          String
+  PERIAPSIS           Float
+  PERIOD              Float
+  RA_OF_ASC_NODE      Float
+  RCS_SIZE            String?
+  REF_FRAME           String
+  REV_AT_EPOCH        Int
+  SEMIMAJOR_AXIS      Float
+  SITE                String?
+  TIME_SYSTEM         String
+  TLE_LINE0           String
+  TLE_LINE1           String
+  TLE_LINE2           String
+}
+
+model Capsule {
+  @@map("capsules")
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  v              Int?     @map("__v")
+  land_landings  Int
+  last_update    String?
+  launches       String[] @db.ObjectId
+  launchesRel    Launch[] @relation(fields: [launches], references: [id])
+  reuse_count    Int
+  serial         String   @unique(map: "serial_1")
+  status         String
+  type           String
+  water_landings Int
+}
+
+model Company {
+  @@map("companies")
+  id             String                @id @default(auto()) @map("_id") @db.ObjectId
+  ceo            String
+  coo            String
+  cto            String
+  cto_propulsion String
+  employees      Int
+  founded        Int
+  founder        String
+  headquarters   CompanyHeadquarters
+  launch_sites   Int
+  links          CompanyLinks
+  name           String
+  summary        String
+  test_sites     Int
+  valuation      BigInt
+  vehicles       Int
+}
+
+model Core {
+  @@map("cores")
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  v             Int      @map("__v")
+  asds_attempts Int
+  asds_landings Int
+  block         Int?
+  last_update   String?
+  launches      String[] @db.ObjectId
+  reuse_count   Int
+  rtls_attempts Int
+  rtls_landings Int
+  serial        String   @unique(map: "serial_1")
+  status        String
+}
+
+model Crew {
+  @@map("crews")
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  v         Int      @map("__v")
+  agency    String
+  image     String
+  launches  String[] @db.ObjectId
+  name      String
+  status    String
+  wikipedia String
+}
+
+model Dragon {
+  @@map("dragons")
+  id                  String                    @id @default(auto()) @map("_id") @db.ObjectId
+  v                   Int                       @map("__v")
+  active              Boolean
+  crew_capacity       Int
+  description         String
+  diameter            DragonDiameter
+  dry_mass_kg         Int
+  dry_mass_lb         Int
+  first_flight        String
+  flickr_images       String[]
+  heat_shield         DragonHeatShield
+  height_w_trunk      DragonHeightWTrunk
+  launch_payload_mass DragonLaunchPayloadMass
+  launch_payload_vol  DragonLaunchPayloadVol
+  name                String                    @unique(map: "name_1")
+  orbit_duration_yr   Int
+  pressurized_capsule DragonPressurizedCapsule
+  return_payload_mass DragonReturnPayloadMass
+  return_payload_vol  DragonReturnPayloadVol
+  sidewall_angle_deg  Int
+  thrusters           DragonThrusters[]
+  trunk               DragonTrunk
+  type                String
+  wikipedia           String
+}
+
+model History {
+  @@map("histories")
+  id              String         @id @default(auto()) @map("_id") @db.ObjectId
+  details         String
+  event_date_unix Int
+  event_date_utc  String
+  links           HistoriesLinks
+  title           String
+}
+
+model Landpad {
+  @@map("landpads")
+  id                String         @id @default(auto()) @map("_id") @db.ObjectId
+  v                 Int            @map("__v")
+  details           String
+  full_name         String
+  images            LandpadImages
+  landing_attempts  Int
+  landing_successes Int
+  latitude          Float
+  launches          String[]       @db.ObjectId
+  locality          String
+  longitude         Float
+  name              String
+  region            String
+  status            String
+  type              String
+  wikipedia         String
+}
+
+model Launch {
+  @@map("launches")
+  id                    String             @id @default(auto()) @map("_id") @db.ObjectId
+  v                     Int                @map("__v")
+  auto_update           Boolean
+  capsules              String[]           @db.ObjectId
+  capsulesRel           Capsule[] @relation(fields: [capsules], references: [id])
+  cores                 LaunchCore[]
+  crew                  LaunchCrew[]
+  date_local            String
+  date_precision        String
+  date_unix             Int
+  date_utc              String
+  details               String?
+  failures              LaunchFailure[]
+  fairings              LaunchFairings?
+  flight_number         Int
+  launch_library_id     String?
+  launchpadRel          Launchpad       @relation(fields: [launchpad], references: [id])
+  launchpad             String             @db.ObjectId
+  links                 LaunchLinks
+  name                  String             @unique(map: "name_1")
+  net                   Boolean
+  //payloads              String[]           @db.ObjectId
+  payloads              Payload[]
+  rocketRel             Rocket            @relation(fields: [rocket], references: [id])
+  rocket                String             @db.ObjectId
+  ships                 String[]           @db.ObjectId
+  /// Multiple data types found: String: 73.6%, Int: 26.4% out of 193 sampled entries
+  static_fire_date_unix Json?
+  //static_fire_date_unix DateTime?
+  static_fire_date_utc  String?
+  success               Boolean?
+  tbd                   Boolean
+  upcoming              Boolean
+  window                Int?
+
+  @@index([flight_number], map: "flight_number_1")
+}
+
+model Launchpad {
+  @@map("launchpads")
+  id               String           @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int              @map("__v")
+  details          String
+  full_name        String
+  images           LaunchpadImages
+  latitude         Float
+  launch_attempts  Int
+  launch_successes Int
+  //launches         String[]         @db.ObjectId
+  launches         Launch[]
+  locality         String
+  longitude        Float
+  name             String
+  region           String
+  rockets          String[]
+  status           String
+  timezone         String
+}
+
+model Payload {
+  @@map("payloads")
+  id                 String         @id @default(auto()) @map("_id") @db.ObjectId
+  v                  Int            @map("__v")
+  /// Multiple data types found: Float: 98.3%, Int: 1.7% out of 225 sampled entries
+  //apoapsis_km        Json?
+  apoapsis_km        Float?
+  arg_of_pericenter  Float?
+  customers          String[]
+  dragon             PayloadDragon
+  eccentricity       Float?
+  epoch              String?
+  /// Multiple data types found: Float: 95.8%, Int: 4.2% out of 225 sampled entries
+  //inclination_deg    Json?
+  inclination_deg    Float?
+  launchRel          Launch       @relation(fields: [launch], references: [id])
+  launch             String         @db.ObjectId
+  /// Multiple data types found: Float: 1.4%, Int: 98.6% out of 225 sampled entries
+  //lifespan_years     Json?
+  lifespan_years     Float?
+  /// Multiple data types found: Float: 47.2%, Int: 52.8% out of 225 sampled entries
+  //longitude          Json?
+  longitude          Float?
+  manufacturers      String[]
+  /// Multiple data types found: Float: 14.3%, Int: 85.7% out of 225 sampled entries
+  //mass_kg            Json?
+  mass_kg            Float?
+  /// Multiple data types found: Float: 36.2%, Int: 63.8% out of 225 sampled entries
+  mass_lbs           Json?
+  mean_anomaly       Float?
+  mean_motion        Float?
+  name               String         @unique(map: "name_1")
+  nationalities      String[]
+  norad_ids          Int[]
+  orbit              String?
+  /// Multiple data types found: Float: 98.3%, Int: 1.7% out of 225 sampled entries
+  //periapsis_km       Json?
+  periapsis_km       Float?
+  /// Multiple data types found: Float: 99.1%, Int: 0.9% out of 225 sampled entries
+  //period_min         Json?
+  period_min         Float?
+  raan               Float?
+  reference_system   String?
+  regime             String?
+  reused             Boolean
+  semi_major_axis_km Float?
+  type               String
+}
+
+model Roadster {
+  @@map("roadsters")
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  apoapsis_au        Float
+  details            String
+  earth_distance_km  Float
+  earth_distance_mi  Float
+  eccentricity       Float
+  epoch_jd           Float
+  flickr_images      String[]
+  inclination        Float
+  launch_date_unix   Int
+  launch_date_utc    String
+  launch_mass_kg     Int
+  launch_mass_lbs    Int
+  longitude          Float
+  mars_distance_km   Float
+  mars_distance_mi   Float
+  name               String
+  norad_id           Int
+  orbit_type         String
+  periapsis_arg      Float
+  periapsis_au       Float
+  period_days        Float
+  semi_major_axis_au Float
+  speed_kph          Float
+  speed_mph          Float
+  video              String
+  wikipedia          String
+}
+
+model Rocket {
+  @@map("rockets")
+  id               String                  @id @default(auto()) @map("_id") @db.ObjectId
+  v                Int                     @map("__v")
+  active           Boolean
+  boosters         Int
+  company          String
+  cost_per_launch  Int
+  country          String
+  description      String
+  diameter         RocketDiameter
+  engines          RocketEngines
+  first_flight     String
+  first_stage      RocketFirstStage
+  flickr_images    String[]
+  height           RocketHeight
+  landing_legs     RocketLandingLegs
+  mass             RocketMass
+  name             String
+  payload_weights  RocketPayloadWeights[]
+  second_stage     RocketSecondStage
+  stages           Int
+  success_rate_pct Int
+  type             String
+  wikipedia        String
+  launches Launch[]
+}
+
+model Ship {
+  @@map("ships")
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  v          Int      @map("__v")
+  abs        Int?
+  active     Boolean
+  class      Int?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  //course_deg Json?
+  home_port  String
+  image      String?
+  imo        Int?
+  latitude   Float?
+  launches   String[] @db.ObjectId
+  legacy_id  String?
+  link       String?
+  longitude  Float?
+  mass_kg    Int?
+  mass_lbs   Int?
+  mmsi       Int?
+  model      String?
+  name       String   @unique(map: "name_1")
+  roles      String[]
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  //speed_kn   Json?
+  status     String?
+  type       String
+  year_built Int?
+}
+
+model Starlink {
+  @@map("starlinks")
+  id           String              @id @default(auto()) @map("_id") @db.ObjectId
+  v            Int                 @map("__v")
+  height_km    Float?
+  latitude     Float?
+  launch       String?             @db.ObjectId
+  longitude    Float?
+  spaceTrack   StarlinkSpaceTrack
+  velocity_kms Float?
+  version      String?
+}
+
+model User {
+  @@map("users")
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}

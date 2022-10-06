@@ -1,0 +1,42 @@
+Arguments: 
+  /home/kurt/.nvm/versions/node/v16.15.1/bin/node /home/kurt/.nvm/versions/node/v16.15.1/bin/yarn
+
+PATH: 
+  /home/kurt/.asdf/shims:/home/kurt/.asdf/bin:/home/kurt/.local/bin:/home/kurt/.pyenv/shims:/home/kurt/.pyenv/bin:/home/kurt/.vscode-server/bin/74b1f979648cc44d385a2286793c226e611f59e7/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/kurt/.local/bin:/home/kurt/.cargo/bin:/home/kurt/.nvm/versions/node/v16.15.1/bin:/home/kurt/.local/bin:/home/kurt/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Intel/WiFi/bin/:/mnt/c/Program Files/Common Files/Intel/WirelessCommon/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/LLVM/bin:/mnt/c/Dev/flutter/bin:/mnt/c/Program Files/Microsoft Visual Studio/2022/Community/Msbuild/Current/Bin:/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin:/mnt/c/Program Files/Meson/:/mnt/c/Bin:/mnt/c/Lib:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files/Git/cmd:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Users/kurti/AppData/Roaming/nvm:/mnt/c/Program Files/nodejs:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/kurti/AppData/Roaming/Python/Scripts:/mnt/c/Users/kurti/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/kurti/.dotnet/tools:/mnt/c/Users/kurti/AppData/Local/GitHubDesktop/bin:/mnt/c/Users/kurti/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/Users/kurti/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/kurti/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin:/usr/local/go/bin:/usr/local/go/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.15.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/kurt/Dev/gspacex/apps/graphql/package.json: Unexpected token } in JSON at position 262
+      at JSON.parse (<anonymous>)
+      at /home/kurt/.nvm/versions/node/v16.15.1/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/home/kurt/.nvm/versions/node/v16.15.1/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/kurt/.nvm/versions/node/v16.15.1/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "root",
+    "private": true,
+    "workspaces": [
+      "apps/*",
+      "libs/*",
+      "workers/*"
+    ],
+    "devDependencies": {
+      "lerna": "^5.5.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
