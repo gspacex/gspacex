@@ -1,15 +1,17 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-import { createServer } from '@graphql-yoga/node';
+import { createServer } from 'http'
+import { createYoga } from 'graphql-yoga'
 
 import { configure } from "@gspacex/lib-settings";
 configure(process.env)
 
 import { schema } from '@gspacex/lib-graphql'
 
-const server = createServer({
+const yoga = createYoga({
   schema,
 });
+const server = createServer(yoga)
 
-server.start();
+server.listen(4000, '127.0.0.1')

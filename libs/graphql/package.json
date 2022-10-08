@@ -1,23 +1,22 @@
 {
-    "name": "@gspacex/lib-graphql",
-    "version": "1.0.0",
-    "description": "GraphQL SpaceX",
-    "main": "src/index.ts",
-    "scripts": {
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-      "typescript": "^4.8.4"
-    },
-    "dependencies": {
-      "@gspacex/lib-database": "^1.0.0",
-      "@pothos/core": "^3.22.0",
-      "@pothos/plugin-prisma": "^3.35.1",
-      "graphql": "^16.6.0",
-      "graphql-scalars": "^1.18.0",
-      "moment": "^2.29.4"
-    }
+  "name": "@gspacex/lib-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL SpaceX",
+  "main": "src/index.ts",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@gspacex/lib-database": "^1.0.0",
+    "@pothos/core": "^3.22.0",
+    "@pothos/plugin-prisma": "^3.35.1",
+    "@prisma/client": "^4.4.0",
+    "graphql": "^16.6.0",
+    "graphql-scalars": "^1.18.0",
+    "moment": "^2.29.4"
   }
-  
+}

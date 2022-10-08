@@ -10,7 +10,7 @@ export interface Env {
   // MY_BUCKET: R2Bucket;
 }
 
-import { createServer } from "@graphql-yoga/common";
+import { createYoga } from 'graphql-yoga'
 //import { schema } from "@gspacex/lib-graphql";
 import { Settings, configure } from "@gspacex/lib-settings";
 
@@ -18,9 +18,10 @@ export default {
   async fetch(request: Request, env: Settings, ctx: ExecutionContext) {
     configure(env);
     const { schema } = await import("@gspacex/lib-graphql");
-    const server = createServer<{ env: Env; ctx: ExecutionContext }>({
+    console.log(schema)
+    const yoga = createYoga<{ env: Env; ctx: ExecutionContext }>({
       schema,
     });
-    return server.handleRequest(request, { env, ctx });
+    return yoga.handleRequest(request, { env, ctx });
   },
 };
