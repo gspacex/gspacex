@@ -36,7 +36,33 @@ builder.queryField("launches", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
+      return prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, orderBy: {date_utc: 'asc'} });
+    },
+  })
+);
+
+builder.queryField("launchesUpcoming", (t) =>
+  t.prismaField({
+    type: ["Launch"],
+    args: {
+      offset: t.arg.int(),
+      limit: t.arg.int(),
+    },
+    resolve: async (query, root, args) => {
+      return prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, where: { upcoming: true}, orderBy: {date_utc: 'asc'} });
+    },
+  })
+);
+
+builder.queryField("launchesPast", (t) =>
+  t.prismaField({
+    type: ["Launch"],
+    args: {
+      offset: t.arg.int(),
+      limit: t.arg.int(),
+    },
+    resolve: async (query, root, args) => {
+      return prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, where: { upcoming: false}, orderBy: {date_utc: 'desc'} });
     },
   })
 );
