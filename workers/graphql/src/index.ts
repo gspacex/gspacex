@@ -22,6 +22,7 @@ export default {
     const { schema } = await import("@gspacex/lib-graphql");
     const yoga = createYoga({
       schema,
+      graphqlEndpoint: '/',
       /*context(ctx) {
         return {
           //...ctx,

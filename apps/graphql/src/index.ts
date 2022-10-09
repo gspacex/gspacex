@@ -11,6 +11,7 @@ import { schema } from '@gspacex/lib-graphql'
 
 const yoga = createYoga({
   schema,
+  graphqlEndpoint: '/',
 });
 const server = createServer(yoga)
 
