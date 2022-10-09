@@ -1,6 +1,5 @@
 import { builder } from "../builder";
-import { prisma } from "../db";
-import { Launch } from "@prisma/client";
+import { db } from "../db";
 
 builder.prismaObject("Capsule", {
   fields: (t) => ({
@@ -24,7 +23,7 @@ builder.queryField("capsules", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.capsule.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
+      return db.prisma.capsule.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
     },
   })
 );
@@ -37,7 +36,7 @@ builder.queryField("capsule", (t) =>
       id: t.arg.id({ required: true}),
     },
     resolve: async (query, root, args) => {
-      return prisma.capsule.findUnique({where: { id: args.id as string }});
+      return db.prisma.capsule.findUnique({where: { id: args.id as string }});
     },
   })
 );

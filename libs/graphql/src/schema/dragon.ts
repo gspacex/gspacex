@@ -1,5 +1,5 @@
 import { builder } from "../builder";
-import { prisma } from "../db";
+import { db } from "../db";
 
 builder.prismaObject("Dragon", {
   fields: (t) => ({
@@ -19,7 +19,7 @@ builder.queryField("dragons", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.dragon.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
+      return db.prisma.dragon.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
     },
   })
 );
@@ -32,7 +32,7 @@ builder.queryField("dragon", (t) =>
       id: t.arg.id({ required: true}),
     },
     resolve: async (query, root, args) => {
-      return prisma.dragon.findUnique({where: { id: args.id as string }});
+      return db.prisma.dragon.findUnique({where: { id: args.id as string }});
     },
   })
 );

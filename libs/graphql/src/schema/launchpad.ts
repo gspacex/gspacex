@@ -1,5 +1,5 @@
 import { builder } from "../builder";
-import { prisma } from "../db";
+import { db } from "../db";
 
 builder.prismaObject("Launchpad", {
   fields: (t) => ({
@@ -19,7 +19,7 @@ builder.queryField("launchpads", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.launchpad.findMany({
+      return db.prisma.launchpad.findMany({
         ...query,
         skip: args.offset as number,
         take: args.limit as number,
@@ -36,7 +36,7 @@ builder.queryField("launchpad", (t) =>
       id: t.arg.id({ required: true }),
     },
     resolve: async (query, root, args) => {
-      return prisma.launchpad.findUnique({ where: { id: args.id as string } });
+      return db.prisma.launchpad.findUnique({ where: { id: args.id as string } });
     },
   })
 );

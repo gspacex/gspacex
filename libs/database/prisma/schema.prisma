@@ -8,8 +8,8 @@ generator pothos {
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL")
-  //url      = ""
+  //url      = env("DATABASE_URL")
+  url      = ""
 }
 
 type CompanyHeadquarters {

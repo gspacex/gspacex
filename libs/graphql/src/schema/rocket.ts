@@ -1,5 +1,5 @@
 import { builder } from "../builder";
-import { prisma } from "../db";
+import { db } from "../db";
 
 builder.objectType("RocketEngines", {
   fields: (t) => ({
@@ -56,7 +56,7 @@ builder.queryField("rockets", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.rocket.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
+      return db.prisma.rocket.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
     },
   })
 );
@@ -69,7 +69,7 @@ builder.queryField("rocket", (t) =>
       id: t.arg.id({ required: true}),
     },
     resolve: async (query, root, args) => {
-      return prisma.rocket.findUnique({where: { id: args.id as string }});
+      return db.prisma.rocket.findUnique({where: { id: args.id as string }});
     },
   })
 );

@@ -1,5 +1,5 @@
 import { builder } from "../../builder";
-import { prisma } from "../../db";
+import { db } from "../../db";
 
 builder.objectType("LaunchCore", {
   fields: (t) => ({
@@ -9,7 +9,7 @@ builder.objectType("LaunchCore", {
       nullable: true,
       resolve: async (query, root, args, ctx, info) => {
         if (root.core) {
-          return prisma.core.findUnique({ where: { id: root.core } });
+          return db.prisma.core.findUnique({ where: { id: root.core } });
         }
       },
     }),

@@ -1,5 +1,4 @@
 import { builder } from "../../builder";
-import { prisma } from "../../db";
 
 builder.objectType("LaunchFairings", {
   fields: (t) => ({

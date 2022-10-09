@@ -1,41 +1,13 @@
-import { Prisma, PrismaClient } from "@prisma/client";
-import { PrismaClient as PrismaEdgeClient } from "@prisma/client/edge";
 import { settings } from "@gspacex/lib-settings";
+import { Database } from './base'
 
-export type PrismaClientType = PrismaClient<
-  Prisma.PrismaClientOptions,
-  never,
-  Prisma.RejectOnNotFound | Prisma.RejectPerOperation | undefined
->;
+import { ServerfulDb } from "./serverful";
+import { ServerlessDb } from "./serverless";
 
-export let prisma: PrismaClient<
-  Prisma.PrismaClientOptions,
-  never,
-  Prisma.RejectOnNotFound | Prisma.RejectPerOperation | undefined
->;
+export let db:Database;
 
-if (settings.SERVERLESS) {
-  prisma = new PrismaEdgeClient({
-    datasources: {
-      db: {
-        url: settings.DATABASE_URL,
-      },
-    },
-  });
+if (settings.SERVERFUL) {
+  db = new ServerfulDb();
 } else {
-  prisma = new PrismaClient({
-    datasources: {
-      db: {
-        url: settings.DATABASE_URL,
-      },
-    },
-  });
+  db = new ServerlessDb();
 }
-//export const prisma = new PrismaClient({});
-/*prisma = new PrismaEdgeClient({
-  datasources: {
-    db: {
-      url: settings.DATABASE_URL
-    }
-  }
-})*/

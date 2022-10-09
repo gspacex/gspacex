@@ -3,7 +3,7 @@
 
 export interface Settings {
   DATABASE_URL: string;
-  SERVERLESS: string | undefined;
+  SERVERFUL: string | undefined;
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
   // MY_KV_NAMESPACE: KVNamespace;
   //
@@ -23,13 +23,13 @@ declare global {
 
 export let settings: Settings = {
   DATABASE_URL: "",
-  SERVERLESS: undefined,
+  SERVERFUL: undefined,
 };
 
 export function configure(env: Settings) {
   settings = {
     DATABASE_URL: env.DATABASE_URL,
-    SERVERLESS: env.SERVERLESS,
+    SERVERFUL: env.SERVERFUL,
   };
 }
 

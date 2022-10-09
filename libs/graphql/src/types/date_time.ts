@@ -1,5 +1,4 @@
 import { DateTimeResolver } from "graphql-scalars";
-import moment from 'moment'
 import { builder } from '../builder'
 
 builder.addScalarType('DateTime', DateTimeResolver, {});

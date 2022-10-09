@@ -1,5 +1,5 @@
 import { builder } from "../builder";
-import { prisma } from "../db";
+import { db } from "../db";
 import { Launch } from "@prisma/client";
 
 builder.prismaObject("Core", {
@@ -22,7 +22,7 @@ builder.prismaObject("Core", {
       resolve: async (_, root) => {
         const launches: Array<Launch> = [];
         for (let id of root.launches) {
-          const launch = prisma.launch.findUnique({
+          const launch = db.prisma.launch.findUnique({
             where: { id },
           }) as unknown;
           launches.push(launch as Launch);
@@ -41,7 +41,7 @@ builder.queryField("cores", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.core.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
+      return db.prisma.core.findMany({ ...query, skip: args.offset as number, take: args.limit as number });
     },
   })
 );
@@ -54,7 +54,7 @@ builder.queryField("core", (t) =>
       id: t.arg.id({ required: true}),
     },
     resolve: async (query, root, args) => {
-      return prisma.core.findUnique({where: { id: args.id as string }});
+      return db.prisma.core.findUnique({where: { id: args.id as string }});
     },
   })
 );

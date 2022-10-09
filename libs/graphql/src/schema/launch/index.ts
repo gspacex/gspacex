@@ -1,5 +1,5 @@
 import { builder } from "../../builder";
-import { prisma } from "../../db";
+import { db } from "../../db";
 
 import './core'
 import './fairing'
@@ -36,7 +36,7 @@ builder.queryField("launches", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, orderBy: {date_utc: 'asc'} });
+      return db.prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, orderBy: {date_utc: 'asc'} });
     },
   })
 );
@@ -49,7 +49,7 @@ builder.queryField("launchesUpcoming", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, where: { upcoming: true}, orderBy: {date_utc: 'asc'} });
+      return db.prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, where: { upcoming: true}, orderBy: {date_utc: 'asc'} });
     },
   })
 );
@@ -62,7 +62,7 @@ builder.queryField("launchesPast", (t) =>
       limit: t.arg.int(),
     },
     resolve: async (query, root, args) => {
-      return prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, where: { upcoming: false}, orderBy: {date_utc: 'desc'} });
+      return db.prisma.launch.findMany({ ...query, skip: args.offset as number, take: args.limit as number, where: { upcoming: false}, orderBy: {date_utc: 'desc'} });
     },
   })
 );
@@ -75,7 +75,7 @@ builder.queryField("launch", (t) =>
       id: t.arg.id({ required: true}),
     },
     resolve: async (query, root, args) => {
-      return prisma.launch.findUnique({where: { id: args.id as string }});
+      return db.prisma.launch.findUnique({where: { id: args.id as string }});
     },
   })
 );
