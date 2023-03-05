@@ -12,11 +12,8 @@ RUN mkdir $APP_HOME && chown -R node $APP_HOME
 USER node
 WORKDIR $APP_HOME
 
-#RUN mkdir -p $APP_HOME
-#WORKDIR $APP_HOME
 EXPOSE 8787
 
-#RUN pnpm install --frozen-lockfile --ignore-scripts
 RUN pnpm install
 
 FROM base AS development
