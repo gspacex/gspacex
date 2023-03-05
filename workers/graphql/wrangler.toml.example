@@ -1,0 +1,10 @@
+# Top-level configuration
+name = "graphql"
+main = "src/index.ts"
+compatibility_date = "2022-07-12"
+
+workers_dev = true
+tsconfig = "tsconfig.json"
+
+[vars]
+DATABASE_URL="<PRISMA DATA PROXY URL>"
