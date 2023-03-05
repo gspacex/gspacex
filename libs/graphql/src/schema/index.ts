@@ -1,3 +1,4 @@
+import './company'
 import './core'
 import './rocket'
 import './launch'

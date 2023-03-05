@@ -15,4 +15,4 @@ const yoga = createYoga({
 });
 const server = createServer(yoga)
 
-server.listen(4000, '127.0.0.1')
+server.listen(8787, '0.0.0.0')

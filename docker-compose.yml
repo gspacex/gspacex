@@ -8,6 +8,20 @@ volumes:
   db:
 
 services:
+  graphql:
+    build:
+      context: ./
+      target: development
+    links:
+      - db
+    env_file: ./docker.env
+    networks:
+      - gspacex
+    ports:
+      - 8787:8787
+    volumes:
+      - ./:/app
+
   db:
     image: mongo:bionic
     environment:

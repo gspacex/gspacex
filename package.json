@@ -1,12 +1,19 @@
 {
-  "name": "root",
+  "name": "gspacex-root",
   "private": true,
+  "author": {
+    "name": "Kurtis Fields",
+    "email": "kurtisfields@gmail.com"
+  },
+  "repository": {
+    "type": "https",
+    "url": "https://github.com/gspacex/gspacex"
+  },
   "workspaces": [
     "apps/*",
     "libs/*",
     "workers/*"
   ],
   "devDependencies": {
-    "lerna": "^5.5.4"
   }
 }

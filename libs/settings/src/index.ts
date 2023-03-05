@@ -1,6 +1,3 @@
-//import * as dotenv from 'dotenv'
-//dotenv.config()
-
 export interface Settings {
   DATABASE_URL: string;
   SERVERFUL: string | undefined;
@@ -32,25 +29,3 @@ export function configure(env: Settings) {
     SERVERFUL: env.SERVERFUL,
   };
 }
-
-/*function isNode() {
-  if ((typeof process !== 'undefined') &&
-  (process.release.name.search(/node|io.js/) !== -1)) {
-    return true;
-  } else {
-    return false;
-  }  
-}*/
-/*function isNode() {
-  //return process != undefined
-  //return typeof process === 'object';
-  return typeof window === 'undefined'
-}
-
-if(isNode()) {
-  //import * as dotenv from 'dotenv'
-  //const dotenv = await import('dotenv')
-  //dotenv.config()
-  import('dotenv').then(dotenv => { dotenv.config()})
-  configure(process.env);
-}*/
