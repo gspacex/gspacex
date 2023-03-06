@@ -15,7 +15,7 @@ builder.prismaObject("Company", {
     cto: t.exposeString("cto"),
     coo: t.exposeString("coo"),
     cto_propulsion: t.exposeString("cto_propulsion"),
-    valuation: t.expose("valuation", { type: 'BigInt' }),
+    valuation: t.expose("valuation", { type: "BigInt" }),
     headquarters: t.expose("headquarters", { type: "CompanyHeadquarters" }),
     links: t.expose("links", { type: "CompanyLinks" }),
     summary: t.exposeString("summary"),
@@ -56,15 +56,18 @@ builder.queryField("companies", (t) =>
   })
 );
 
-builder.queryField("company", (t) =>
+builder.queryField('company', (t) =>
   t.prismaField({
-    type: "Company",
+    type: 'Company',
     nullable: true,
     args: {
       id: t.arg.id({ required: true }),
     },
     resolve: async (query, root, args) => {
-      return db.prisma.company.findUnique({ where: { id: args.id as string } });
+      return db.prisma.company.findUnique({
+        ...query,
+        where: { id: args.id as string },
+      });
     },
   })
 );

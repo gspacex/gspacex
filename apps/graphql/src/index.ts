@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv'
-dotenv.config()
+//dotenv.config()
+dotenv.config({ path: '../../local.env' })
 
 import { createServer } from 'http'
 import { createYoga } from 'graphql-yoga'

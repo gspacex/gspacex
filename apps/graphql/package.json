@@ -21,7 +21,7 @@
     "@gspacex/lib-graphql": "^1.0.0",
     "@gspacex/lib-settings": "^1.0.0",
     "graphql": "^16.6.0",
-    "graphql-yoga": "^3.0.0-next.4"
+    "graphql-yoga": "^3.7.2"
   },
   "engines": {
     "node": ">=16.16.0"
