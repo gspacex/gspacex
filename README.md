@@ -1,17 +1,17 @@
 # GSpaceX
 
-SpaceX GraphQL API
+GraphQL SpaceX API
 
 Runs under Node and Cloudflare Workers
 
-Example Front end: [Quasar GSpaceX](https://github.com/gspacex/quasar-gspacex)
+Example Front end: [GSpaceX - Quasar](https://github.com/gspacex/gspacex-quasar)
 
-Demo at: https://quasar-gspacex.pages.dev/
+Demo at: https://gspacex-quasar.pages.dev/
 
 ## Local Development
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 Browse Yoga GraphiQl:  http://localhost:8787/

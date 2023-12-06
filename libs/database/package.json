@@ -9,12 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prisma": "^4.11.0",
-    "typescript": "^4.8.4"
+    "prisma": "5.7.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@gspacex/lib-settings": "^1.0.0",
-    "@prisma/client": "^4.11.0"
+    "@prisma/client": "5.7.0"
   }
-
 }

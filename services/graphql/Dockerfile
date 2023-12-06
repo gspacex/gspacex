@@ -1,4 +1,5 @@
-FROM node:16.16.0-slim as base
+#FROM node:16.16.0-slim as base
+FROM node:bullseye-slim as base
 
 ENV APP_HOME /app
 
@@ -6,7 +7,7 @@ ENV APP_HOME /app
 #RUN npm -g i pnpm@7.13.3 && \
 #    pnpm install --frozen-lockfile --ignore-scripts
 
-RUN npm -g i pnpm@7.13.3
+RUN npm -g i pnpm@8.11.0
 
 RUN mkdir $APP_HOME && chown -R node $APP_HOME
 USER node

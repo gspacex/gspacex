@@ -23,7 +23,7 @@ services:
       - ./:/app
 
   db:
-    image: mongo:bionic
+    image: mongo:jammy
     environment:
       MONGO_INITDB_ROOT_USERNAME: gspacex
       MONGO_INITDB_ROOT_PASSWORD: gspacex
